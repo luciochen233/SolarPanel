@@ -1,0 +1,252 @@
+/*  Author: Guoliang Chen @ gchen08
+    Project: AST101 Final Project
+    What is it about: A simple simulation of the solar system
+    When is it due: December, 2020
+    When did I started: November 17th
+*/
+:root{
+    --sizeOffset:1;
+
+    --sizeBorder: calc(1px * var(--sizeOffset));
+    --sizeSun: calc(50px* var(--sizeOffset));
+
+    --sizeEarthOrbit:calc(90px * var(--sizeOffset));
+    --sizeEarth:calc(7px* var(--sizeOffset));
+    --orbEarth:30s;
+
+    --sizeMoon:calc(2px * var(--sizeOffset));
+    --sizeMoonOrbit:calc(15px * var(--sizeOffset));
+    --orbMoon:1.5s;
+
+    --sizeMarsOrbit:calc(60px * var(--sizeOffset));
+    --sizeMars:calc(7px * var(--sizeOffset));
+    --orbMars:21s;
+}
+html {
+    height: 100%;
+    background: radial-gradient(ellipse at top, #7649fe, #0c164f 100%),
+                radial-gradient(ellipse at bottom, #0c164f 100%, #1d1135 0%);
+    /* color source : https://colorswall.com/palette/134/ I simply googled "space color" and this is the first thing pops out*/
+    /* radial-gradient is learnt from  https://developer.mozilla.org/en-US/docs/Web/CSS/radial-gradient*/
+    overflow: hidden;
+}
+/* Just to meet the Syracuse Guideline. I am prabably one of the few students who know and use this font*/
+@font-face {
+font-family: 'ShermanSans';
+src: url('https://assets.syracuse.edu/fonts/shermansans-book.woff2') format('woff2'),
+    url('https://assets.syracuse.edu/fonts/shermansans-book.woff') format('woff'),
+    url('https://assets.syracuse.edu/fonts/shermansans-book.eot') format('embedded-opentype');
+font-weight: normal;
+font-style: normal;
+font-display: swap;
+unicode-range: U+0020-007F, U+00A9, U+00AE, U+2013-201D;
+}
+
+@font-face {
+font-family: 'ShermanSans';
+src: url('https://assets.syracuse.edu/fonts/shermansans-book-intl.woff2') format('woff2'),
+    url('https://assets.syracuse.edu/fonts/shermansans-book-intl.woff') format('woff'),
+    url('https://assets.syracuse.edu/fonts/shermansans-book-intl.eot') format('embedded-opentype');
+font-weight: normal;
+font-style: normal;
+font-display: swap;
+unicode-range: U+00A0-00A8, U+00C0-024F, U+201E-2026;
+}
+
+body {
+    height: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: ShermanSans, Verdana, sans-serif;
+    font-weight: 500;
+    color: #2f3234;
+    overflow: hidden!important
+}
+
+.space{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 1;
+    color: #fff;
+    background-attachment: fixed;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+}
+
+#solar-container {
+    /*   position: relative; */
+      top: 25px;
+      left: 25px;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, -50%)
+    }
+
+#control-container {
+    /*   position: relative; */
+        top: 25px;
+        left: 25px;
+        height: 100%;
+        width: 300px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%)
+    }
+/* 
+.space div:not(.sun) {
+    border: var(--sizeBorder) solid rgba(248, 198, 246, 0.356);
+    border-radius: 50%;
+} */
+/* .space div:not(.sun)::before {
+    left: 50%;
+    border-radius: 50%;
+    content: "";
+    position: absolute
+} */
+
+
+.sun {
+    background: radial-gradient(ellipse at center, #ffe678 0%, #f1cf70 20%, #e06317 100%);
+    background-size: 200%;
+    height: var(--sizeSun);
+    width: var(--sizeSun);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 15px 5px rgba(177, 73, 12, 0.712);
+    border-radius: 50%;
+}
+
+.orbitEarth {
+
+    /* background: radial-gradient(ellipse at center, #ffe678 0%, #f1cf70 20%, #e06317 100%); */
+    background-size: 200%;
+    border: var(--sizeBorder) rgba(248, 198, 246, 0.356) dashed;
+    height: var(--sizeEarthOrbit);
+    width: var(--sizeEarthOrbit);
+
+
+
+
+
+    position: fixed;
+    top:-100%; right:-100%; left:-100%; bottom:-100%;
+    margin:auto;
+    /* box-shadow: 0 0 15px 5px rgba(177, 73, 12, 0.712); */
+    border-radius: 50%;
+    -webkit-animation: orb var(--orbEarth) linear infinite;
+    animation: orb var(--orbEarth) linear infinite;
+
+    /* border: var(--sizeBorder) solid rgba(248, 198, 246, 0.356);
+    background: solid rgba(0,0,0,0); */
+    /* border-radius: 50%; */
+    /* height: var(--sizeEarthOrbit);
+    width: var(--sizeEarthOrbit);
+    position: absolute; */
+    /* top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%); */
+    /* display:flex;
+    justify-content:center;
+    align-items:center; */
+    /* Please forgive me on the complex calculation here, the border is very annoying */
+    /* -webkit-animation: orb var(--orbEarth) linear infinite;
+    animation: orb var(--orbEarth) linear infinite; */
+}
+
+.planetEarth {
+    border-radius: 50%;
+    height: var(--sizeEarth);
+    width: var(--sizeEarth);
+    background: #11abe9;
+    margin-top: calc(-0.5 * var(--sizeEarth) - 0.5 * var(--sizeBorder)); 
+    margin-left: calc(0.5 * var(--sizeEarthOrbit) - 0.5* var(--sizeEarth) - 0.5 * var(--sizeBorder) );
+    position: absolute
+}
+
+
+.orbitMars {
+    /* background: radial-gradient(ellipse at center, #ffe678 0%, #f1cf70 20%, #e06317 100%); */
+    background-size: 200%;
+    border: var(--sizeBorder) rgba(248, 198, 246, 0.356) dashed;
+    height: var(--sizeMarsOrbit);
+    width: var(--sizeMarsOrbit);
+
+    position: fixed;
+    top:-100%; right:-100%; left:-100%; bottom:-100%;
+    margin:auto;
+    border-radius: 50%;
+    -webkit-animation: orb var(--orbMars) linear infinite;
+    animation: orb var(--orbMars) linear infinite;
+}
+
+.planetMars {
+    border-radius: 50%;
+    height: var(--sizeMars);
+    width: var(--sizeMars);
+    background: #ec561b;
+    margin-top: calc(-0.5 * var(--sizeMars) - 0.5 * var(--sizeBorder)); 
+    margin-left: calc(0.5 * var(--sizeMarsOrbit) - 0.5* var(--sizeMars) - 0.5 * var(--sizeBorder) );
+    position: absolute
+}
+
+
+.space .moonOrbit{
+    border: var(--sizeBorder) solid rgba(248, 198, 246, 0.356);
+    border-radius: 50%;
+    height: var(--sizeMoonOrbit);
+    width: var(--sizeMoonOrbit);
+    margin-top: calc( -0.5*var(--sizeEarth) - var(--sizeBorder));
+    margin-left: calc(-0.5 * var(--sizeMoonOrbit) + 0.5 * var(--sizeEarth) - var(--sizeBorder));
+    position: absolute;
+    /* Please forgive me on the complex calculation here, the border is very annoying */
+    -webkit-animation: orb var(--orbMoon) linear infinite;
+    animation: orb var(--orbMoon) linear infinite;
+}
+
+.space .moon {
+    border-radius: 50%;
+    height: var(--sizeMoon);
+    width: var(--sizeMoon);
+    background: #828b8f;
+    margin-top: calc(-0.5 * var(--sizeMoon) ); 
+    margin-left: calc(0.5 * var(--sizeMoonOrbit) - 0.5* var(--sizeMoon));
+    position: absolute
+}
+
+@-webkit-keyframes orb {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+    to {
+        -webkit-transform: rotate(-360deg);
+        transform: rotate(-360deg)
+    }
+}
+@keyframes orb {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+    to {
+        -webkit-transform: rotate(-360deg);
+        transform: rotate(-360deg)
+    }
+}
