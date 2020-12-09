@@ -105,7 +105,7 @@ body {
         margin-right: -50%;
         transform: translate(-50%, -50%)
     }
-/* 
+/*
 .space div:not(.sun) {
     border: var(--sizeBorder) solid rgba(248, 198, 246, 0.356);
     border-radius: 50%;
@@ -175,7 +175,7 @@ body {
     height: var(--sizeEarth);
     width: var(--sizeEarth);
     background: #11abe9;
-    margin-top: calc(-0.5 * var(--sizeEarth) - 0.5 * var(--sizeBorder)); 
+    margin-top: calc(-0.5 * var(--sizeEarth) - 0.5 * var(--sizeBorder));
     margin-left: calc(0.5 * var(--sizeEarthOrbit) - 0.5* var(--sizeEarth) - 0.5 * var(--sizeBorder) );
     position: absolute
 }
@@ -201,7 +201,7 @@ body {
     height: var(--sizeMars);
     width: var(--sizeMars);
     background: #ec561b;
-    margin-top: calc(-0.5 * var(--sizeMars) - 0.5 * var(--sizeBorder)); 
+    margin-top: calc(-0.5 * var(--sizeMars) - 0.5 * var(--sizeBorder));
     margin-left: calc(0.5 * var(--sizeMarsOrbit) - 0.5* var(--sizeMars) - 0.5 * var(--sizeBorder) );
     position: absolute
 }
@@ -225,9 +225,18 @@ body {
     height: var(--sizeMoon);
     width: var(--sizeMoon);
     background: #828b8f;
-    margin-top: calc(-0.5 * var(--sizeMoon) ); 
+    margin-top: calc(-0.5 * var(--sizeMoon) );
     margin-left: calc(0.5 * var(--sizeMoonOrbit) - 0.5* var(--sizeMoon));
     position: absolute
+}
+
+canvas {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
 }
 
 @-webkit-keyframes orb {
