@@ -1,26 +1,46 @@
-/*  Author: Guoliang Chen @ gchen08
+/*  Author: Guoliang Chen -> gchen08
+            Maxwell Bockmann -> mwbockma
     Project: AST101 Final Project
     What is it about: A simple simulation of the solar system
     When is it due: December, 2020
     When did I started: November 17th
+
+    Second revision started: December 10th
+        Goal:   1.  adding all planet in the solar system
+                2.  adding options to change the scale to realistic
+                3.  adding more details to each planet (Optional)
 */
-:root{
+:root{ 
     --sizeOffset:1;
 
     --sizeBorder: calc(1px * var(--sizeOffset));
     --sizeSun: calc(50px* var(--sizeOffset));
 
-    --sizeEarthOrbit:calc(90px * var(--sizeOffset));
+    --sizeMercuryOrbit:calc(60px * var(--sizeOffset));
+    --sizeMercury:calc(5px * var(--sizeOffset));
+    --orbMercury:15s;
+    --colorMercury:#c28c27;
+
+    --sizeVenusOrbit:calc(90px * var(--sizeOffset));
+    --sizeVenus:calc(6px * var(--sizeOffset));
+    --orbVenus:19s;
+    --colorVenus:#f8d820;
+
+    --sizeEarthOrbit:calc(120px * var(--sizeOffset));
     --sizeEarth:calc(7px* var(--sizeOffset));
     --orbEarth:30s;
+    --colorEarth:#11abe9;
+
+    --sizeMarsOrbit:calc(150px * var(--sizeOffset));
+    --sizeMars:calc(7px * var(--sizeOffset));
+    --orbMars:36s;
+    --colorMars:#ec561b;
 
     --sizeMoon:calc(2px * var(--sizeOffset));
     --sizeMoonOrbit:calc(15px * var(--sizeOffset));
     --orbMoon:1.5s;
 
-    --sizeMarsOrbit:calc(60px * var(--sizeOffset));
-    --sizeMars:calc(7px * var(--sizeOffset));
-    --orbMars:21s;
+    
 }
 html {
     height: 100%;
@@ -91,7 +111,6 @@ body {
       left: 50%;
       margin-right: -50%;
       transform: translate(-50%, -50%);
-      z-index:999
     }
 
 #control-container {
@@ -121,80 +140,135 @@ body {
     border-radius: 50%;
 }
 
-.orbitEarth {
+.orbitMercury {
+    --orbit:var(--sizeMercuryOrbit);
+    --time:var(--orbMercury);
 
-    /* background: radial-gradient(ellipse at center, #ffe678 0%, #f1cf70 20%, #e06317 100%); */
     background-size: 200%;
     border: var(--sizeBorder) rgba(248, 198, 246, 0.356) dashed;
-    height: var(--sizeEarthOrbit);
-    width: var(--sizeEarthOrbit);
-
-
-
-
+    height: var(--orbit);
+    width: var(--orbit);
 
     position: fixed;
     top:-100%; right:-100%; left:-100%; bottom:-100%;
     margin:auto;
-    /* box-shadow: 0 0 15px 5px rgba(177, 73, 12, 0.712); */
     border-radius: 50%;
-    -webkit-animation: orb var(--orbEarth) linear infinite;
-    animation: orb var(--orbEarth) linear infinite;
+    -webkit-animation: orb var(--time) linear infinite;
+    animation: orb var(--time) linear infinite;
+    z-index: 20;
+}
 
-    /* border: var(--sizeBorder) solid rgba(248, 198, 246, 0.356);
-    background: solid rgba(0,0,0,0); */
-    /* border-radius: 50%; */
-    /* height: var(--sizeEarthOrbit);
-    width: var(--sizeEarthOrbit);
-    position: absolute; */
-    /* top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%); */
-    /* display:flex;
-    justify-content:center;
-    align-items:center; */
-    /* Please forgive me on the complex calculation here, the border is very annoying */
-    /* -webkit-animation: orb var(--orbEarth) linear infinite;
-    animation: orb var(--orbEarth) linear infinite; */
+.planetMercury {
+    /*variable get from global*/
+    --orbit:var(--sizeMercuryOrbit);
+    --planet:var(--sizeMercury);
+    --color:var(--colorMercury);
+
+    border-radius: 50%;
+    height: var(--planet);
+    width: var(--planet);
+    background: var(--color);
+    margin-top: calc(-0.5 * var(--planet) - 0.5 * var(--sizeBorder));
+    margin-left: calc(0.5 * var(--orbit) - 0.5* var(--planet) - 0.5 * var(--sizeBorder) );
+    position: absolute;
+}
+
+.orbitVenus {
+    --orbit:var(--sizeVenusOrbit);
+    --time:var(--orbVenus);
+
+    background-size: 200%;
+    border: var(--sizeBorder) rgba(248, 198, 246, 0.356) dashed;
+    height: var(--orbit);
+    width: var(--orbit);
+
+    position: fixed;
+    top:-100%; right:-100%; left:-100%; bottom:-100%;
+    margin:auto;
+    border-radius: 50%;
+    -webkit-animation: orb var(--time) linear infinite;
+    animation: orb var(--time) linear infinite;
+    z-index: 19;
+}
+
+.planetVenus {
+    /*variable get from global*/
+    --orbit:var(--sizeVenusOrbit);
+    --planet:var(--sizeVenus);
+    --color:var(--colorVenus);
+
+    border-radius: 50%;
+    height: var(--planet);
+    width: var(--planet);
+    background: var(--color);
+    margin-top: calc(-0.5 * var(--planet) - 0.5 * var(--sizeBorder));
+    margin-left: calc(0.5 * var(--orbit) - 0.5* var(--planet) - 0.5 * var(--sizeBorder) );
+}
+
+
+.orbitEarth {
+    --orbit:var(--sizeEarthOrbit) !important;
+    --time:var(--orbEarth) !important;
+    all:inherit;
+
+    background-size: 200%;
+    border: var(--sizeBorder) rgba(248, 198, 246, 0.356) dashed;
+    height: var(--orbit);
+    width: var(--orbit);
+    position: fixed;
+    top:-100%; right:-100%; left:-100%; bottom:-100%;
+    margin:auto;
+    border-radius: 50%;
+    -webkit-animation: orb var(--time) linear infinite;
+    animation: orb var(--time) linear infinite;
+    z-index: 18;
 }
 
 .planetEarth {
+    --orbit:var(--sizeEarthOrbit);
+    --planet:var(--sizeEarth);
+    --color:var(--colorEarth);
+
     border-radius: 50%;
-    height: var(--sizeEarth);
-    width: var(--sizeEarth);
-    background: #11abe9;
-    margin-top: calc(-0.5 * var(--sizeEarth) - 0.5 * var(--sizeBorder));
-    margin-left: calc(0.5 * var(--sizeEarthOrbit) - 0.5* var(--sizeEarth) - 0.5 * var(--sizeBorder) );
-    position: absolute
+    height: var(--planet);
+    width: var(--planet);
+    background: var(--color);
+    margin-top: calc(-0.5 * var(--planet) - 0.5 * var(--sizeBorder));
+    margin-left: calc(0.5 * var(--orbit) - 0.5* var(--planet) - 0.5 * var(--sizeBorder) );
+    position: absolute;
 }
 
 
 .orbitMars {
-    /* background: radial-gradient(ellipse at center, #ffe678 0%, #f1cf70 20%, #e06317 100%); */
+    --orbit:var(--sizeMarsOrbit);
+    --time:var(--orbMars);
+
     background-size: 200%;
     border: var(--sizeBorder) rgba(248, 198, 246, 0.356) dashed;
-    height: var(--sizeMarsOrbit);
-    width: var(--sizeMarsOrbit);
-
+    height: var(--orbit);
+    width: var(--orbit);
     position: fixed;
     top:-100%; right:-100%; left:-100%; bottom:-100%;
     margin:auto;
     border-radius: 50%;
-    -webkit-animation: orb var(--orbMars) linear infinite;
-    animation: orb var(--orbMars) linear infinite;
+    -webkit-animation: orb var(--time) linear infinite;
+    animation: orb var(--time) linear infinite;
+    z-index: 17;
 }
 
 .planetMars {
-    border-radius: 50%;
-    height: var(--sizeMars);
-    width: var(--sizeMars);
-    background: #ec561b;
-    margin-top: calc(-0.5 * var(--sizeMars) - 0.5 * var(--sizeBorder));
-    margin-left: calc(0.5 * var(--sizeMarsOrbit) - 0.5* var(--sizeMars) - 0.5 * var(--sizeBorder) );
-    position: absolute
-}
+    --orbit:var(--sizeMarsOrbit);
+    --planet:var(--sizeMars);
+    --color : var(--colorMars);
 
+    border-radius: 50%;
+    height: var(--planet);
+    width: var(--planet);
+    background: var(--color);
+    margin-top: calc(-0.5 * var(--planet) - 0.5 * var(--sizeBorder));
+    margin-left: calc(0.5 * var(--orbit) - 0.5* var(--planet) - 0.5 * var(--sizeBorder) );
+    position: absolute;
+}
 
 .space .moonOrbit{
     border: var(--sizeBorder) solid rgba(248, 198, 246, 0.356);
@@ -204,7 +278,6 @@ body {
     margin-top: calc( -0.5*var(--sizeEarth) - var(--sizeBorder));
     margin-left: calc(-0.5 * var(--sizeMoonOrbit) + 0.5 * var(--sizeEarth) - var(--sizeBorder));
     position: absolute;
-    /* Please forgive me on the complex calculation here, the border is very annoying */
     -webkit-animation: orb var(--orbMoon) linear infinite;
     animation: orb var(--orbMoon) linear infinite;
 }

@@ -24,18 +24,25 @@
         <a href="#">Guoliang Chen and Maxwell Bockmann</a>
         <div class="slidecontainer">
             <input type="range" min="1" max="100" value="1" class="slider" id="myRange">
+            <p>Zoom: <span id="demo"></span></p>
         </div>
     </div>
 
     <!-- PLANETS-->
     <div id="solar-container">
         <div class="sun"></div>
-        <div class="orbitEarth">
-            <div class="planetEarth openbtn" onclick="openNav(); setTextEarth()" style="cursor: pointer;"></div>
-        </div>
-        <div class="orbitMars">
-            <div class="planetMars openbtn" onclick="openNav()" style="cursor: pointer;"></div>
-        </div>
+            <div class="orbitMercury">
+                <div class="planetMercury"></div>
+            </div>
+            <div class="orbitVenus">
+                <div class="planetVenus"></div>
+            </div>
+            <div class="orbitEarth">
+                <div class="planetEarth openbtn" onclick="openNav(); setTextEarth()" style="cursor: pointer;"></div>
+            </div>
+            <div class="orbitMars">
+                <div class="planetMars openbtn" onclick="openNav()" style="cursor: pointer;"></div>
+            </div>
     </div>
 </body>
 
