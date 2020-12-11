@@ -1,9 +1,32 @@
+<!-- Author: Guoliang Chen -> gchen08
+        Maxwell Bockmann -> mwbockma
+Project: AST101 Final Project
+What is it about: A simple simulation of the solar system
+When is it due: December, 2020
+When did I started: November 17th
+initial upload:
+    only sun and earth
+    limited animation
+
+revision started Dec 8th
+    added interactive tab
+    added background starts
+
+revision Dec 10th
+    TBA.
+
+revision December 11th
+    Goal:   1.  adding all planet in the solar system (checked)
+            2.  adding options to change the scale to realistic (TODO)
+            3.  adding more details to each planet (Optional) 
+-->
+
 <!DOCTYPE html>
 <head>
     <!-- Referencing stylesheets-->
     <link rel="stylesheet" href="./testsolar.css" type="text/css">
-    <link rel="stylesheet" href="./slider.css" type="text/css">
     <link rel="stylesheet" href="./sidebar.css" type="text/css">
+    <link rel="stylesheet" href="./toggleSwitch.css" type="text/css">
     <!-- Referencing script sources for bootstrap/jquery-->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"
@@ -22,10 +45,11 @@
         <p class = "planetfactsbody" id="planetfactsbody"></p>
         <a href="https://github.com/luciochen233/SolarPanel">Github</a>
         <a href="#">Guoliang Chen and Maxwell Bockmann</a>
-        <div class="slidecontainer">
-            <input type="range" min="1" max="100" value="1" class="slider" id="myRange">
-            <p>Zoom: <span id="demo"></span></p>
-        </div>
+        <a ><label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+        </label></a>
+        
     </div>
 
     <!-- PLANETS-->
@@ -62,16 +86,49 @@
 <script>
     const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
     const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
-    var slider = document.getElementById("myRange");
-    var output = document.getElementById("demo");
+    let root = document.documentElement;
+    
+    // output.innerHTML = slider.value;
+
+    // slider.oninput = function() {
+    //     document.documentElement.style.setProperty('--sizeOffset', this.value/33 + 1);
+    //     output.innerHTML = ((this.value-1)/33 + 1).toFixed(2);
+    // }
+
+    //function to change scale
+    document.addEventListener('DOMContentLoaded', function () {
+        var checkbox = document.querySelector('input[type="checkbox"]');
+
+        checkbox.addEventListener('change', function () {
+        if (checkbox.checked) {
+        // do this
+            root.style.setProperty('')
+            
+            console.log('Checked');
+        } else {
+        // do that
+            console.log('Not checked');
+        }
+        });
+
+        window.addEventListener("wheel", event => { //zoom in and out function
+        const delta = Math.sign(event.deltaY);
+        if(delta > 0){
+            
+            var currentZoom = parseFloat(getComputedStyle(document.documentElement).
+            getPropertyValue('--sizeOffset'));
+            root.style.setProperty("--sizeOffset",currentZoom * 0.95);
+            // console.info(currentZoom);
+        }
+        else if(delta < 0){
+            var currentZoom = parseFloat(getComputedStyle(document.documentElement).
+            getPropertyValue('--sizeOffset'));
+            root.style.setProperty("--sizeOffset",currentZoom * 1.05);
+        }
+        });
+    });
 
     
-    output.innerHTML = slider.value;
-
-    slider.oninput = function() {
-        document.documentElement.style.setProperty('--sizeOffset', this.value/33 + 1);
-        output.innerHTML = ((this.value-1)/33 + 1).toFixed(2);
-    }
 
     //Functions to manage sidebar
     function openNav() {

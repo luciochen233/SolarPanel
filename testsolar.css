@@ -19,44 +19,52 @@
     --sizeSun: calc(50px* var(--sizeOffset));
 
     --sizeMercuryOrbit:calc(100px * var(--sizeOffset));
-    --sizeMercury:calc(5px * var(--sizeOffset));
-    --orbMercury:15s;
+    --sizeMercury:calc(2.6768px * var(--sizeOffset));
+    --orbMercury:14.44s;
     --colorMercury:#c28c27;
+    --posMercury:152;
 
     --sizeVenusOrbit:calc(150px * var(--sizeOffset));
-    --sizeVenus:calc(6px * var(--sizeOffset));
-    --orbVenus:19s;
+    --sizeVenus:calc(6.6422px * var(--sizeOffset));
+    --orbVenus:36.907s;
     --colorVenus:#f8d820;
+    --posVenus:107;
 
     --sizeEarthOrbit:calc(200px * var(--sizeOffset));
     --sizeEarth:calc(7px* var(--sizeOffset));
-    --orbEarth:30s;
+    --orbEarth:60s;
     --colorEarth:#11abe9;
+    --posEarth:350;
 
     --sizeMarsOrbit:calc(250px * var(--sizeOffset));
-    --sizeMars:calc(7px * var(--sizeOffset));
-    --orbMars:36s;
+    --sizeMars:calc(3.7244px * var(--sizeOffset));
+    --orbMars:112.84s;
     --colorMars:#ec561b;
-
+    --posMars:325;
+    /* Far planets */
     --sizeJupiterOrbit:calc(350px * var(--sizeOffset));
-    --sizeJupiter:calc(28px * var(--sizeOffset));
-    --orbJupiter:55s;
+    --sizeJupiter:calc(78.36px * var(--sizeOffset));
+    --orbJupiter:711s;
     --colorJupiter:#993902;
+    --posJupiter:216;
 
-    --sizeSaturnOrbit:calc(450px * var(--sizeOffset));
-    --sizeSaturn:calc(25px * var(--sizeOffset));
-    --orbSaturn:120s;
+    --sizeSaturnOrbit:calc(550px * var(--sizeOffset));
+    --sizeSaturn:calc(66.21px * var(--sizeOffset));
+    --orbSaturn:1767.3s;
     --colorSaturn:#995731;
+    --posSaturn:213;
 
-    --sizeUranusOrbit:calc(550px * var(--sizeOffset));
-    --sizeUranus:calc(13px * var(--sizeOffset));
-    --orbUranus:240s;
+    --sizeUranusOrbit:calc(750px * var(--sizeOffset));
+    --sizeUranus:calc(28.0515px * var(--sizeOffset));
+    --orbUranus:5044s;
     --colorUranus:#a78c7d;
+    --posUranus:309;
 
-    --sizeNeptuneOrbit:calc(650px * var(--sizeOffset));
-    --sizeNeptune:calc(12px * var(--sizeOffset));
-    --orbNeptune:480s;
+    --sizeNeptuneOrbit:calc(950px * var(--sizeOffset));
+    --sizeNeptune:calc(26.6698px * var(--sizeOffset));
+    --orbNeptune:9888s;
     --colorNeptune:#8d8b8a;
+    --posNeptune:260;
 
     --sizeMoon:calc(2px * var(--sizeOffset));
     --sizeMoonOrbit:calc(15px * var(--sizeOffset));
@@ -161,11 +169,13 @@ body {
     transform: translate(-50%, -50%);
     box-shadow: 0 0 15px 5px rgba(177, 73, 12, 0.712);
     border-radius: 50%;
+    z-index: 21;
 }
 
 .orbitMercury {
     --orbit:var(--sizeMercuryOrbit);
     --time:var(--orbMercury);
+    --pos:var(--posMercury);
 
     background-size: 200%;
     border: var(--sizeBorder) rgba(248, 198, 246, 0.356) dashed;
@@ -178,8 +188,8 @@ body {
     border-radius: 50%;
     -webkit-animation: orb var(--time) linear infinite;
     animation: orb var(--time) linear infinite;
-    -webkit-animation-delay: -5s;
-    animation-delay: -5s;
+    -webkit-animation-delay: calc(var(--pos)/360 * -1 * var(--time));
+    animation-delay: calc(var(--pos)/360 * -1 * var(--time));
     z-index: 20;
 }
 
@@ -201,6 +211,7 @@ body {
 .orbitVenus {
     --orbit:var(--sizeVenusOrbit);
     --time:var(--orbVenus);
+    --pos:var(--posVenus);
 
     background-size: 200%;
     border: var(--sizeBorder) rgba(248, 198, 246, 0.356) dashed;
@@ -213,8 +224,8 @@ body {
     border-radius: 50%;
     -webkit-animation: orb var(--time) linear infinite;
     animation: orb var(--time) linear infinite;
-    -webkit-animation-delay: -4s;
-    animation-delay: -4s;
+    -webkit-animation-delay: calc(var(--pos)/360 * -1 * var(--time));
+    animation-delay: calc(var(--pos)/360 * -1 * var(--time));
     z-index: 19;
 }
 
@@ -236,7 +247,7 @@ body {
 .orbitEarth {
     --orbit:var(--sizeEarthOrbit) !important;
     --time:var(--orbEarth) !important;
-    all:inherit;
+    --pos:var(--posEarth);
 
     background-size: 200%;
     border: var(--sizeBorder) rgba(248, 198, 246, 0.356) dashed;
@@ -248,8 +259,8 @@ body {
     border-radius: 50%;
     -webkit-animation: orb var(--time) linear infinite;
     animation: orb var(--time) linear infinite;
-    -webkit-animation-delay: -34s;
-    animation-delay: -34s;
+    -webkit-animation-delay: calc(var(--pos)/360 * -1 * var(--time));
+    animation-delay: calc(var(--pos)/360 * -1 * var(--time));
     z-index: 18;
 }
 
@@ -271,6 +282,7 @@ body {
 .orbitMars {
     --orbit:var(--sizeMarsOrbit);
     --time:var(--orbMars);
+    --pos:var(--posMars);
 
     background-size: 200%;
     border: var(--sizeBorder) rgba(248, 198, 246, 0.356) dashed;
@@ -282,8 +294,8 @@ body {
     border-radius: 50%;
     -webkit-animation: orb var(--time) linear infinite;
     animation: orb var(--time) linear infinite;
-    -webkit-animation-delay: -14s;
-    animation-delay: -14s;
+    -webkit-animation-delay: calc(var(--pos)/360 * -1 * var(--time));
+    animation-delay: calc(var(--pos)/360 * -1 * var(--time));
     z-index: 17;
 }
 
@@ -304,6 +316,7 @@ body {
 .orbitJupiter {
     --orbit:var(--sizeJupiterOrbit);
     --time:var(--orbJupiter);
+    --pos:var(--posJupiter);
 
     background-size: 200%;
     border: var(--sizeBorder) rgba(248, 198, 246, 0.356) dashed;
@@ -315,8 +328,8 @@ body {
     border-radius: 50%;
     -webkit-animation: orb var(--time) linear infinite;
     animation: orb var(--time) linear infinite;
-    -webkit-animation-delay: calc(-0.6 * var(--time));
-    animation-delay: calc(-0.6 * var(--time));
+    -webkit-animation-delay: calc(var(--pos)/360 * -1 * var(--time));
+    animation-delay: calc(var(--pos)/360 * -1 * var(--time));
     z-index: 16;
 }
 
@@ -337,6 +350,7 @@ body {
 .orbitSaturn {
     --orbit:var(--sizeSaturnOrbit);
     --time:var(--orbSaturn);
+    --pos:var(--posSaturn);
 
     background-size: 200%;
     border: var(--sizeBorder) rgba(248, 198, 246, 0.356) dashed;
@@ -348,8 +362,8 @@ body {
     border-radius: 50%;
     -webkit-animation: orb var(--time) linear infinite;
     animation: orb var(--time) linear infinite;
-    -webkit-animation-delay: calc(-0.8 * var(--time));
-    animation-delay: calc(-0.8 * var(--time));
+    -webkit-animation-delay: calc(var(--pos)/360 * -1 * var(--time));
+    animation-delay: calc(var(--pos)/360 * -1 * var(--time));
     z-index: 15;
 }
 
@@ -370,6 +384,7 @@ body {
 .orbitUranus {
     --orbit:var(--sizeUranusOrbit);
     --time:var(--orbUranus);
+    --pos:var(--posUranus);
 
     background-size: 200%;
     border: var(--sizeBorder) rgba(248, 198, 246, 0.356) dashed;
@@ -381,8 +396,8 @@ body {
     border-radius: 50%;
     -webkit-animation: orb var(--time) linear infinite;
     animation: orb var(--time) linear infinite;
-    -webkit-animation-delay: calc(-0.9 * var(--time));
-    animation-delay: calc(-0.9 * var(--time));
+    -webkit-animation-delay: calc(var(--pos)/360 * -1 * var(--time));
+    animation-delay: calc(var(--pos)/360 * -1 * var(--time));
     z-index: 14;
 }
 
@@ -403,6 +418,7 @@ body {
 .orbitNeptune {
     --orbit:var(--sizeNeptuneOrbit);
     --time:var(--orbNeptune);
+    --pos:var(--posNeptune);
 
     background-size: 200%;
     border: var(--sizeBorder) rgba(248, 198, 246, 0.356) dashed;
@@ -414,9 +430,9 @@ body {
     border-radius: 50%;
     -webkit-animation: orb var(--time) linear infinite;
     animation: orb var(--time) linear infinite;
-    -webkit-animation-delay: calc(-0.9 * var(--time));
-    animation-delay: calc(-0.9 * var(--time));
-    z-index: 14;
+    -webkit-animation-delay: calc(var(--pos)/360 * -1 * var(--time));
+    animation-delay: calc(var(--pos)/360 * -1 * var(--time));
+    z-index: 13;
 }
 
 .planetNeptune {
