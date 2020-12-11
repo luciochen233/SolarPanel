@@ -91,6 +91,7 @@ body {
       left: 50%;
       margin-right: -50%;
       transform: translate(-50%, -50%);
+      z-index:999
     }
 
 #control-container {
@@ -105,18 +106,6 @@ body {
         margin-right: -50%;
         transform: translate(-50%, -50%)
     }
-/*
-.space div:not(.sun) {
-    border: var(--sizeBorder) solid rgba(248, 198, 246, 0.356);
-    border-radius: 50%;
-} */
-/* .space div:not(.sun)::before {
-    left: 50%;
-    border-radius: 50%;
-    content: "";
-    position: absolute
-} */
-
 
 .sun {
     background: radial-gradient(ellipse at center, #ffe678 0%, #f1cf70 20%, #e06317 100%);

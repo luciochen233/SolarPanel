@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<head>
+    <!-- Referencing stylesheets-->
+    <link rel="stylesheet" href="./testsolar.css" type="text/css">
+    <link rel="stylesheet" href="./slider.css" type="text/css">
+    <link rel="stylesheet" href="./sidebar.css" type="text/css">
+    <!-- Referencing script sources for bootstrap/jquery-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Referencing script sources for PIXI.js/space effects-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.0.0/pixi.min.js"></script>
+    <script src="js/space.js"></script>
+
+    <!-- Sidebar div - reappears based on functions-->
+    <div id="sidebar" class="sidenav">
+        <a href="javascript:void(0)" onclick="closeNav()">&times;</a>
+        <p class = "planetfactsbody" id="planetfactsbody"></p>
+        <a href="https://github.com/luciochen233/SolarPanel">Github</a>
+        <a href="#">Guoliang Chen and Maxwell Bockmann</a>
+        <div class="slidecontainer">
+            <input type="range" min="1" max="100" value="1" class="slider" id="myRange">
+        </div>
+    </div>
+
+    <!-- PLANETS-->
+    <div id="solar-container">
+        <div class="sun"></div>
+        <div class="orbitEarth">
+            <div class="planetEarth openbtn" onclick="openNav(); setTextEarth()" style="cursor: pointer;"></div>
+        </div>
+        <div class="orbitMars">
+            <div class="planetMars openbtn" onclick="openNav()" style="cursor: pointer;"></div>
+        </div>
+    </div>
+</body>
+
+
+<script>
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value;
+
+    slider.oninput = function() {
+        document.documentElement.style.setProperty('--sizeOffset', this.value/33 + 1);
+        output.innerHTML = ((this.value-1)/33 + 1).toFixed(2);
+    }
+
+    //Functions to manage sidebar
+    function openNav() {
+    document.getElementById('sidebar').style.width="500px";
+    }
+    
+    function closeNav() {
+    document.getElementById('sidebar').style.width="0"
+    }
+
+    //Functions to set text in sidebar for different planets
+    function setTextEarth() {
+    document.getElementById('planetfactsbody').innerHTML = 
+    "EARTH <br></br> What a cool planet - wow!";
+    }
+</script>
+
+</html>
