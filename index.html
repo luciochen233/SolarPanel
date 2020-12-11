@@ -56,28 +56,28 @@ revision December 11th
     <div id="solar-container">
         <div class="sun"></div>
             <div class="orbitMercury">
-                <div class="planetMercury"></div>
+                <div class="planetMercury openbtn" onclick="openNav(); setTextMercury()" style="cursor: pointer;"></div>
             </div>
             <div class="orbitVenus">
-                <div class="planetVenus"></div>
+                <div class="planetVenus openbtn" onclick="openNav(); setTextVenus()" style="cursor: pointer;"></div>
             </div>
             <div class="orbitEarth">
                 <div class="planetEarth openbtn" onclick="openNav(); setTextEarth()" style="cursor: pointer;"></div>
             </div>
             <div class="orbitMars">
-                <div class="planetMars openbtn" onclick="openNav()" style="cursor: pointer;"></div>
+                <div class="planetMars openbtn" onclick="openNav(); setTextMars()" style="cursor: pointer;"></div>
             </div>
             <div class="orbitJupiter">
-                <div class="planetJupiter"></div>
+                <div class="planetJupiter openbtn" onclick="openNav(); setTextJupiter()" style="cursor: pointer;"></div>
             </div>
             <div class="orbitSaturn">
-                <div class="planetSaturn"></div>
+                <div class="planetSaturn openbtn" onclick="openNav(); setTextSaturn()" style="cursor: pointer;"></div>
             </div>
             <div class="orbitUranus">
-                <div class="planetUranus"></div>
+                <div class="planetUranus openbtn" onclick="openNav(); setTextUranus()" style="cursor: pointer;"></div>
             </div>
             <div class="orbitNeptune">
-                <div class="planetNeptune"></div>
+                <div class="planetNeptune openbtn" onclick="openNav(); setTextNeptune()" style="cursor: pointer;"></div>
             </div>
     </div>
 </body>
@@ -142,9 +142,44 @@ revision December 11th
     }
 
     //Functions to set text in sidebar for different planets
+    function setTextMercury() {
+    document.getElementById('planetfactsbody').innerHTML = 
+    "MERCURY <br></br> Distance: 35.98 million mi <br></br> Orbital period: 88 days <br></br> Length of day: 58d 15h 30m <br></br> Surface area: 28.88 million mi² <br></br> The smallest planet in our solar system, with how close Mercury is to the Sun, temperatures can reach 800 degrees F in extreme circumstances.";
+    }
+    
+    function setTextVenus() {
+    document.getElementById('planetfactsbody').innerHTML = 
+    "VENUS <br></br> Distance: 67.24 million mi <br></br> Orbital period: 225 days <br></br> Length of day: 116d 18h 0m <br></br> Surface area: 177.7 million mi² <br></br> Because of the high concentration of carbon dioxide in Venus’ atmosphere which works to produce an intense greenhouse effect, it traps heat in the atmosphere like a blanket and causes the temperature of the planet to be much higher than its proximity to the Sun would suggest, giving an average temperature increase of 50 F compared to Mercury.";
+    }
+    
     function setTextEarth() {
     document.getElementById('planetfactsbody').innerHTML = 
-    "EARTH <br></br> What a cool planet - wow!";
+    "EARTH <br></br> Distance: 92.96 million mi <br></br> Orbital period: 365 days <br></br> Length of day: 23h 56m <br></br> Surface area: 196.9 million mi² <br></br> Earth is the only planet known to have an atmosphere within our solar system, containing free oxygen, oceans of water on its surface and, of course with those, life.";
+    }
+
+    function setTextMars() {
+    document.getElementById('planetfactsbody').innerHTML = 
+    "MARS <br></br> Distance: 141.6 million mi <br></br> Orbital period: 687 days <br></br> Length of day: 1d 0h 37m <br></br> Surface area: 55.91 million mi² <br></br> Mars is the fourth planet from the Sun and the second-smallest planet in the Solar System, being larger than only Mercury. There has been evidence of some water in the ground on Martian hillsides, leading us to believe there may have been a chance for life to be sustained there at some point in time.";
+    }
+
+    function setTextJupiter() {
+    document.getElementById('planetfactsbody').innerHTML = 
+    "JUPITER <br></br> Distance: 483.8 million mi <br></br> Orbital period: 12 years <br></br> Length of day: 9h 56m <br></br> Surface area: 23.71 billion mi² <br></br> Jupiter is both the largest and fastest spinning planet in our solar system. Boasting 67 moons, it is a force to be reckoned with.";
+    }
+
+    function setTextSaturn() {
+    document.getElementById('planetfactsbody').innerHTML = 
+    "SATURN <br></br> Distance: 890.8 million mi <br></br> Orbital period: 29 years <br></br> Length of day: 10h 42m <br></br> Surface area: 16.49 billion mi² <br></br> Saturn is the second largest planet in our solar system, showing a beautiful array of rings. Despite its distance, it is still visable on Earth to the naked eye.";
+    }
+
+    function setTextUranus() {
+    document.getElementById('planetfactsbody').innerHTML = 
+    "URANUS <br></br> Distance: 1.784 billion mi <br></br> Orbital period: 84 years <br></br> Length of day: 17h 14m <br></br> Surface area: 3.121 billion mi² <br></br> Uranus, discovered in 1781 by William Herschel, is the only known planet at the moment to rotate on its side. It is a gas giant nearly four times larger than Earth. ";
+    }
+
+    function setTextNeptune() {
+    document.getElementById('planetfactsbody').innerHTML = 
+    "NEPTUNE <br></br> Distance: 2.793 billion mi <br></br> Orbital period: 165 years <br></br> Length of day: 16h 6m <br></br> Surface area: 2.941 billion mi² <br></br> Neptune is the furthest recognized planet from the Sun, and is a cold, dark, world, with an average temperature of -392 degrees F. Also a gas giant, because of the dense hydrogen, helium, and methane, the planet emits a deep, vibrant, blue hue.";
     }
 </script>
 
