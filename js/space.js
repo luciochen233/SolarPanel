@@ -1,3 +1,6 @@
+
+// CREDITS TO REYNAU FOR SOURCECODE: https://github.com/Reynau/space
+
 var renderer = PIXI.autoDetectRenderer(1920, 1080, { antialias: true });
 renderer.view.style.width = "100%";
 renderer.view.style.height = "100%";
