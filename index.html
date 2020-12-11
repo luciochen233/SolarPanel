@@ -43,13 +43,29 @@
             <div class="orbitMars">
                 <div class="planetMars openbtn" onclick="openNav()" style="cursor: pointer;"></div>
             </div>
+            <div class="orbitJupiter">
+                <div class="planetJupiter"></div>
+            </div>
+            <div class="orbitSaturn">
+                <div class="planetSaturn"></div>
+            </div>
+            <div class="orbitUranus">
+                <div class="planetUranus"></div>
+            </div>
+            <div class="orbitNeptune">
+                <div class="planetNeptune"></div>
+            </div>
     </div>
 </body>
 
 
 <script>
+    const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+    const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
     var slider = document.getElementById("myRange");
     var output = document.getElementById("demo");
+
+    
     output.innerHTML = slider.value;
 
     slider.oninput = function() {
@@ -59,11 +75,13 @@
 
     //Functions to manage sidebar
     function openNav() {
-    document.getElementById('sidebar').style.width="500px";
+    document.getElementById('sidebar').style.width="25%";
+    document.getElementById('solar-container').style.left="37.5%";
     }
     
     function closeNav() {
-    document.getElementById('sidebar').style.width="0"
+    document.getElementById('sidebar').style.width="0";
+    document.getElementById('solar-container').style.left="50%";
     }
 
     //Functions to set text in sidebar for different planets

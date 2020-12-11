@@ -10,31 +10,53 @@
                 2.  adding options to change the scale to realistic
                 3.  adding more details to each planet (Optional)
 */
+
 :root{ 
+    
     --sizeOffset:1;
 
     --sizeBorder: calc(1px * var(--sizeOffset));
     --sizeSun: calc(50px* var(--sizeOffset));
 
-    --sizeMercuryOrbit:calc(60px * var(--sizeOffset));
+    --sizeMercuryOrbit:calc(100px * var(--sizeOffset));
     --sizeMercury:calc(5px * var(--sizeOffset));
     --orbMercury:15s;
     --colorMercury:#c28c27;
 
-    --sizeVenusOrbit:calc(90px * var(--sizeOffset));
+    --sizeVenusOrbit:calc(150px * var(--sizeOffset));
     --sizeVenus:calc(6px * var(--sizeOffset));
     --orbVenus:19s;
     --colorVenus:#f8d820;
 
-    --sizeEarthOrbit:calc(120px * var(--sizeOffset));
+    --sizeEarthOrbit:calc(200px * var(--sizeOffset));
     --sizeEarth:calc(7px* var(--sizeOffset));
     --orbEarth:30s;
     --colorEarth:#11abe9;
 
-    --sizeMarsOrbit:calc(150px * var(--sizeOffset));
+    --sizeMarsOrbit:calc(250px * var(--sizeOffset));
     --sizeMars:calc(7px * var(--sizeOffset));
     --orbMars:36s;
     --colorMars:#ec561b;
+
+    --sizeJupiterOrbit:calc(350px * var(--sizeOffset));
+    --sizeJupiter:calc(28px * var(--sizeOffset));
+    --orbJupiter:55s;
+    --colorJupiter:#993902;
+
+    --sizeSaturnOrbit:calc(450px * var(--sizeOffset));
+    --sizeSaturn:calc(25px * var(--sizeOffset));
+    --orbSaturn:120s;
+    --colorSaturn:#995731;
+
+    --sizeUranusOrbit:calc(550px * var(--sizeOffset));
+    --sizeUranus:calc(13px * var(--sizeOffset));
+    --orbUranus:240s;
+    --colorUranus:#a78c7d;
+
+    --sizeNeptuneOrbit:calc(650px * var(--sizeOffset));
+    --sizeNeptune:calc(12px * var(--sizeOffset));
+    --orbNeptune:480s;
+    --colorNeptune:#8d8b8a;
 
     --sizeMoon:calc(2px * var(--sizeOffset));
     --sizeMoonOrbit:calc(15px * var(--sizeOffset));
@@ -111,6 +133,7 @@ body {
       left: 50%;
       margin-right: -50%;
       transform: translate(-50%, -50%);
+      transition: 0.5s;
     }
 
 #control-container {
@@ -155,6 +178,8 @@ body {
     border-radius: 50%;
     -webkit-animation: orb var(--time) linear infinite;
     animation: orb var(--time) linear infinite;
+    -webkit-animation-delay: -5s;
+    animation-delay: -5s;
     z-index: 20;
 }
 
@@ -188,6 +213,8 @@ body {
     border-radius: 50%;
     -webkit-animation: orb var(--time) linear infinite;
     animation: orb var(--time) linear infinite;
+    -webkit-animation-delay: -4s;
+    animation-delay: -4s;
     z-index: 19;
 }
 
@@ -221,6 +248,8 @@ body {
     border-radius: 50%;
     -webkit-animation: orb var(--time) linear infinite;
     animation: orb var(--time) linear infinite;
+    -webkit-animation-delay: -34s;
+    animation-delay: -34s;
     z-index: 18;
 }
 
@@ -253,6 +282,8 @@ body {
     border-radius: 50%;
     -webkit-animation: orb var(--time) linear infinite;
     animation: orb var(--time) linear infinite;
+    -webkit-animation-delay: -14s;
+    animation-delay: -14s;
     z-index: 17;
 }
 
@@ -260,6 +291,138 @@ body {
     --orbit:var(--sizeMarsOrbit);
     --planet:var(--sizeMars);
     --color : var(--colorMars);
+
+    border-radius: 50%;
+    height: var(--planet);
+    width: var(--planet);
+    background: var(--color);
+    margin-top: calc(-0.5 * var(--planet) - 0.5 * var(--sizeBorder));
+    margin-left: calc(0.5 * var(--orbit) - 0.5* var(--planet) - 0.5 * var(--sizeBorder) );
+    position: absolute;
+}
+
+.orbitJupiter {
+    --orbit:var(--sizeJupiterOrbit);
+    --time:var(--orbJupiter);
+
+    background-size: 200%;
+    border: var(--sizeBorder) rgba(248, 198, 246, 0.356) dashed;
+    height: var(--orbit);
+    width: var(--orbit);
+    position: fixed;
+    top:-100%; right:-100%; left:-100%; bottom:-100%;
+    margin:auto;
+    border-radius: 50%;
+    -webkit-animation: orb var(--time) linear infinite;
+    animation: orb var(--time) linear infinite;
+    -webkit-animation-delay: calc(-0.6 * var(--time));
+    animation-delay: calc(-0.6 * var(--time));
+    z-index: 16;
+}
+
+.planetJupiter {
+    --orbit:var(--sizeJupiterOrbit);
+    --planet:var(--sizeJupiter);
+    --color : var(--colorJupiter);
+
+    border-radius: 50%;
+    height: var(--planet);
+    width: var(--planet);
+    background: var(--color);
+    margin-top: calc(-0.5 * var(--planet) - 0.5 * var(--sizeBorder));
+    margin-left: calc(0.5 * var(--orbit) - 0.5* var(--planet) - 0.5 * var(--sizeBorder) );
+    position: absolute;
+}
+
+.orbitSaturn {
+    --orbit:var(--sizeSaturnOrbit);
+    --time:var(--orbSaturn);
+
+    background-size: 200%;
+    border: var(--sizeBorder) rgba(248, 198, 246, 0.356) dashed;
+    height: var(--orbit);
+    width: var(--orbit);
+    position: fixed;
+    top:-100%; right:-100%; left:-100%; bottom:-100%;
+    margin:auto;
+    border-radius: 50%;
+    -webkit-animation: orb var(--time) linear infinite;
+    animation: orb var(--time) linear infinite;
+    -webkit-animation-delay: calc(-0.8 * var(--time));
+    animation-delay: calc(-0.8 * var(--time));
+    z-index: 15;
+}
+
+.planetSaturn {
+    --orbit:var(--sizeSaturnOrbit);
+    --planet:var(--sizeSaturn);
+    --color : var(--colorSaturn);
+
+    border-radius: 50%;
+    height: var(--planet);
+    width: var(--planet);
+    background: var(--color);
+    margin-top: calc(-0.5 * var(--planet) - 0.5 * var(--sizeBorder));
+    margin-left: calc(0.5 * var(--orbit) - 0.5* var(--planet) - 0.5 * var(--sizeBorder) );
+    position: absolute;
+}
+
+.orbitUranus {
+    --orbit:var(--sizeUranusOrbit);
+    --time:var(--orbUranus);
+
+    background-size: 200%;
+    border: var(--sizeBorder) rgba(248, 198, 246, 0.356) dashed;
+    height: var(--orbit);
+    width: var(--orbit);
+    position: fixed;
+    top:-100%; right:-100%; left:-100%; bottom:-100%;
+    margin:auto;
+    border-radius: 50%;
+    -webkit-animation: orb var(--time) linear infinite;
+    animation: orb var(--time) linear infinite;
+    -webkit-animation-delay: calc(-0.9 * var(--time));
+    animation-delay: calc(-0.9 * var(--time));
+    z-index: 14;
+}
+
+.planetUranus {
+    --orbit:var(--sizeUranusOrbit);
+    --planet:var(--sizeUranus);
+    --color : var(--colorUranus);
+
+    border-radius: 50%;
+    height: var(--planet);
+    width: var(--planet);
+    background: var(--color);
+    margin-top: calc(-0.5 * var(--planet) - 0.5 * var(--sizeBorder));
+    margin-left: calc(0.5 * var(--orbit) - 0.5* var(--planet) - 0.5 * var(--sizeBorder) );
+    position: absolute;
+}
+
+.orbitNeptune {
+    --orbit:var(--sizeNeptuneOrbit);
+    --time:var(--orbNeptune);
+
+    background-size: 200%;
+    border: var(--sizeBorder) rgba(248, 198, 246, 0.356) dashed;
+    height: var(--orbit);
+    width: var(--orbit);
+    position: fixed;
+    top:-100%; right:-100%; left:-100%; bottom:-100%;
+    margin:auto;
+    border-radius: 50%;
+    -webkit-animation: orb var(--time) linear infinite;
+    animation: orb var(--time) linear infinite;
+    -webkit-animation-delay: calc(-0.9 * var(--time));
+    animation-delay: calc(-0.9 * var(--time));
+    z-index: 14;
+}
+
+.planetNeptune {
+    --orbit:var(--sizeNeptuneOrbit);
+    --planet:var(--sizeNeptune);
+    --color : var(--colorNeptune);
 
     border-radius: 50%;
     height: var(--planet);
